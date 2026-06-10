@@ -1,0 +1,407 @@
+<!DOCTYPE html><html lang="pt-BR"><head></head><body class="bg-surface text-on-surface antialiased overflow-x-hidden">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sabrina - Architectural Real Estate</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config defined by the Design System -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#e3e2e0",
+                    "on-secondary-fixed": "#281900",
+                    "on-error-container": "#93000a",
+                    "background": "#fbf9f9",
+                    "on-surface": "#1b1c1c",
+                    "primary": "#000000",
+                    "outline-variant": "#c4c7c7",
+                    "on-tertiary-fixed-variant": "#464746",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#dbdad9",
+                    "on-background": "#1b1c1c",
+                    "outline": "#747878",
+                    "on-tertiary-fixed": "#1a1c1b",
+                    "secondary-fixed-dim": "#e5c188",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#474746",
+                    "inverse-primary": "#c8c6c5",
+                    "on-primary-container": "#858383",
+                    "surface-tint": "#5f5e5e",
+                    "primary-fixed": "#e5e2e1",
+                    "primary-container": "#1c1b1b",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#838482",
+                    "surface-bright": "#fbf9f9",
+                    "tertiary-container": "#1a1c1b",
+                    "surface": "#fbf9f9",
+                    "secondary-fixed": "#ffdeac",
+                    "on-primary-fixed": "#1c1b1b",
+                    "inverse-surface": "#303031",
+                    "on-secondary-container": "#785c2d",
+                    "on-primary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed-variant": "#5b4216",
+                    "secondary-container": "#fdd79d",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#e4e2e2",
+                    "surface-container-low": "#f5f3f3",
+                    "tertiary": "#000000",
+                    "surface-container-highest": "#e4e2e2",
+                    "on-surface-variant": "#444748",
+                    "surface-container-high": "#e9e8e7",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#f2f0f0",
+                    "tertiary-fixed-dim": "#c7c6c5",
+                    "secondary": "#755a2b",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "surface-container": "#efeded"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1440px",
+                    "stack-sm": "8px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "80px",
+                    "stack-lg": "64px",
+                    "gutter": "24px",
+                    "stack-md": "24px"
+            },
+            "fontFamily": {
+                    "label-md": ["Hanken Grotesk"],
+                    "display-lg": ["EB Garamond"],
+                    "headline-md": ["EB Garamond"],
+                    "headline-lg": ["EB Garamond"],
+                    "display-lg-mobile": ["EB Garamond"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        html { scroll-behavior: smooth; }
+        .img-fade-in {
+            animation: softFadeIn 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            opacity: 0;
+        }
+        @keyframes softFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Navigation transition classes */
+        #main-nav {
+            transition: background-color 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+        }
+        #main-nav.scrolled {
+            background-color: rgba(251, 249, 249, 0.9); /* surface-bright with opacity */
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(196, 199, 199, 0.3); /* outline-variant */
+        }
+        .nav-link {
+            transition: color 0.4s ease;
+        }
+        .nav-link.scrolled {
+            color: #444748; /* on-surface-variant */
+        }
+        .nav-link:not(.scrolled) {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        #brand-logo {
+            transition: color 0.4s ease;
+        }
+        #brand-logo.scrolled {
+            color: #000000; /* primary */
+        }
+        #brand-logo:not(.scrolled) {
+            color: #ffffff;
+        }
+        #contact-btn {
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+        #contact-btn.scrolled {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        #contact-btn:not(.scrolled) {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+        }
+
+        /* Carousel Styles */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<header class="fixed top-0 left-0 right-0 w-full z-50 flex justify-center" id="main-nav">
+<div class="flex justify-between items-center h-20 max-w-container-max w-full px-margin-mobile md:px-margin-desktop">
+<!-- Brand -->
+<a class="font-display-lg text-headline-md tracking-tighter" href="#" id="brand-logo">
+            SABRINA
+        </a>
+<!-- Navigation Links (Web only) -->
+<nav class="hidden md:flex items-center space-x-gutter">
+<a class="nav-link font-label-md text-label-md uppercase tracking-widest hover:text-secondary-fixed-dim transition-colors cursor-pointer active:scale-95" href="#">Início</a>
+<a class="nav-link font-label-md text-label-md uppercase tracking-widest hover:text-secondary-fixed-dim transition-colors cursor-pointer active:scale-95" href="#portfolio">Imóveis</a>
+<a class="nav-link font-label-md text-label-md uppercase tracking-widest hover:text-secondary-fixed-dim transition-colors cursor-pointer active:scale-95" href="#sobre-mim">Sobre</a>
+<a class="nav-link font-label-md text-label-md uppercase tracking-widest hover:text-secondary-fixed-dim transition-colors cursor-pointer active:scale-95" href="#contato">Entre em Contato</a>
+</nav>
+<!-- Trailing Action -->
+<a class="hidden md:inline-flex items-center justify-center font-label-md text-label-md uppercase tracking-widest px-8 py-3 rounded-none transition-colors duration-300" href="#contato" id="contact-btn">
+            Solicitar Contato
+        </a>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden" id="mobile-menu-btn">
+<span class="material-symbols-outlined nav-link" style="font-variation-settings: &quot;FILL&quot; 0;">menu</span>
+</button>
+</div>
+</header>
+<main class="">
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden"><!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<img alt="Luxury Interior Background" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL_pBW6cwGg3PF7TOXZaxWBpOIepVGNQ6-if2MY1NcuuX_IeP8oPDDj3K1kkTOhBOF-UOM344ZOZfbAaYS-B_5H9aWDhgt4JrMzozNeL5woXw47QLHCGikf7g9jwxke6X7g7QV-grvI8MqnB3UvTNTCxffNbmyjJTTXo-Oa01DwQFnzP2IrOMRKP8oZm9Ennm3RK1iLaNsYDfJrXxDo_-4pIvbZSS6D0SapJo_Fnvu5H401okD09OWx_jcSL4hrtfUTHuaZrEzTfY">
+<div class="absolute inset-0 bg-black/40"></div>
+</div>
+<!-- Content Overlay -->
+<div class="relative z-10 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center">
+<div class="max-w-4xl mx-auto">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-white leading-tight mb-stack-md [text-shadow:_0_2px_10px_rgba(0,0,0,0.3)]">
+            Encontre o seu Novo Lar: Apartamentos Sob Medida para Você
+        </h1>
+<p class="font-body-lg text-body-lg text-white/90 max-w-2xl mx-auto [text-shadow:_0_1px_5px_rgba(0,0,0,0.3)]">
+            Encontre o seu próximo endereço de prestígio. Uma seleção rigorosa de obras-primas arquitetônicas para os clientes mais exigentes.
+        </p>
+</div>
+</div></section>
+<!-- Portfolio / Featured Apartments (Transformed into Carousel) -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto py-stack-lg" id="portfolio">
+<div class="flex justify-between items-end mb-stack-lg border-b border-outline-variant/20 pb-stack-sm">
+<h2 class="font-headline-lg text-headline-lg text-primary">Imóveis em Destaque</h2>
+<div class="flex items-center gap-6">
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hidden md:block" href="#">Ver Todos</a>
+<div class="flex gap-2">
+<button aria-label="Anterior" class="p-2 border border-outline-variant hover:bg-surface-container-low transition-colors" id="carousel-prev">
+<span class="material-symbols-outlined text-on-surface-variant">chevron_left</span>
+</button>
+<button aria-label="Próximo" class="p-2 border border-outline-variant hover:bg-surface-container-low transition-colors" id="carousel-next">
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Carousel Container -->
+<div class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-gutter pb-4" id="property-carousel">
+<!-- Property Card 1 -->
+<article class="min-w-[85vw] md:min-w-[45vw] lg:min-w-[30vw] snap-start bg-surface-container-lowest border border-primary/5 group cursor-pointer">
+<div class="relative w-full h-[500px] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 img-fade-in" data-alt="A striking exterior shot of a contemporary architectural home characterized by sharp, clean lines and extensive use of glass and concrete." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjeTRwUY-4Vg2T0bMYbs7kfNP1fkj8iiHISEHxEW7d41qNgr55r7z0tkRYvdCYnbCjfXVHF1cvZtPzG8OyN0eul6bERi1_K0saIBZAhzpZSA-7_MOX_d8oGTrL19Y9z55g7f38gWDM9WJiPQMR_DAYQ1ned2wrMrvY0NyicHB44VpC9mHXVftxsnouTvSAhD5lSgqO32VKUPlQcgmeukH1eP9qvGHA3SROjX-0XG7ER15q20g1l0Nae8XLuugPK-yYK_Jv1jp0gIM">
+<div class="absolute top-4 left-4 bg-surface-container-low px-3 py-1">
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest">COBERTURA</span>
+</div>
+</div>
+<div class="p-stack-md flex flex-col gap-2">
+<h3 class="font-headline-md text-headline-md text-primary">106 Seridó</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Jardim Europa, São Paulo</p>
+<p class="font-label-md text-label-md mt-4 text-primary tracking-widest"></p>
+</div>
+</article>
+<!-- Property Card 2 -->
+<article class="min-w-[85vw] md:min-w-[45vw] lg:min-w-[30vw] snap-start bg-surface-container-lowest border border-primary/5 group cursor-pointer">
+<div class="relative w-full h-[500px] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 img-fade-in" data-alt="An expansive, open-plan living and dining area in an ultra-high-end residence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0Me1gdL9KDf1ToaVMgcnULyOj_NBRJse8sOVHXaCFgvKA1N1LN64wHZcKxPerdyfwvc9EpEyV9TYqyic6jp6Rfkvk1Es8O0gk6tqbU0UHvs-KOoUh9vaujGzowxNZNtFm7_6D_633_SL7C3zTUftBnxIl8riZFMpY3mczf3QhpKMNusYdgzGr9gqkZ9UvGBbpkPQQPLqTLnZBVVUVqfs60kXHYVmEufV1boiL0fx44YYeyqe80Q8zgDb7kpXwh7-wYs_j4GZDQaw">
+<div class="absolute top-4 left-4 bg-surface-container-low px-3 py-1">
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest">ESTRUTURAL</span>
+</div>
+</div>
+<div class="p-stack-md flex flex-col gap-2">
+<h3 class="font-headline-md text-headline-md text-primary">Parque Cidade Jardim</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Cidade Jardim, São Paulo</p>
+<p class="font-label-md text-label-md mt-4 text-primary tracking-widest"></p>
+</div>
+</article>
+<!-- Property Card 3 -->
+<article class="min-w-[85vw] md:min-w-[45vw] lg:min-w-[30vw] snap-start bg-surface-container-lowest border border-primary/5 group cursor-pointer">
+<div class="relative w-full h-[500px] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 img-fade-in" data-alt="A luxurious master bathroom featuring an asymmetrical layout." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdDUfgfPKId1qKfS5cs7gPCP6Ah1-Y53ULbx4Fx1n7TEbsxJPqYCEoVmhji4FnY1x2vo3nuN5CTnQ6m8W-TpLJ2Grsq1jobWxMxVJra7WIHLbTmksVwqFjdACGChCG9zLS8bEaA4NhExGhMOz9ssc5GQHOXgdJZJTdhT16nOl9a8owclbvc372gnD-p5a3SIPDRrpqOnREzjKCiflMG2Hf2168_TyBCILC8FBjEzuOxvxn5rSz741U4ORLsnHhm-2bWRkYyn5-2qk">
+<div class="absolute top-4 left-4 bg-surface-container-low px-3 py-1">
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest">EXCLUSIVO</span>
+</div>
+</div>
+<div class="p-stack-md flex flex-col gap-2">
+<h3 class="font-headline-md text-headline-md text-primary">Fasano Private Residences</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Cidade Jardim, SP</p>
+<p class="font-label-md text-label-md mt-4 text-primary tracking-widest"></p>
+</div>
+</article>
+<!-- Additional Property Card for carousel depth -->
+<article class="min-w-[85vw] md:min-w-[45vw] lg:min-w-[30vw] snap-start bg-surface-container-lowest border border-primary/5 group cursor-pointer">
+<div class="relative w-full h-[500px] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 img-fade-in" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZJb45ol3ru8jkMLydXMGPdr0qEZTz3uuHlU47g2b-5eOAo_gEF5Xm5IuydS9hvOPziLbSuf5_NAM4f7JQ9f2qxoN6rH0WupqZTiBneBf2MicgcQXZ6Nlw6NgIUccPBoW8LFiM4iVR6He1emKOGWRYBnvV3PpWzBlYU-mnhM-fek_Yv-mOFxj0qKnBKwB89OVHWoxAjQckkL3bxDXAufbKQfqdDuQdDPua0YPROrmNwDGV7m-U6K9-ZxQduDulaywk-C973Kp-DVw">
+<div class="absolute top-4 left-4 bg-surface-container-low px-3 py-1">
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest">ESTRUTURAL</span>
+</div>
+</div>
+<div class="p-stack-md flex flex-col gap-2">
+<h3 class="font-headline-md text-headline-md text-primary">Place des Vosges</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Morumbi, SP</p>
+<p class="font-label-md text-label-md mt-4 text-primary tracking-widest"></p>
+</div>
+</article>
+</div>
+</section>
+<!-- Sobre Mim Section -->
+<section class="bg-surface-container-low py-stack-lg mt-stack-lg" id="sobre-mim">
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-stack-lg items-center">
+<div class="order-2 md:order-1">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-stack-md">A Arte de Morar Bem</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6 leading-relaxed">
+                    Com mais de uma década dedicada ao mercado imobiliário de ultra-alto padrão, Sabrina não atua apenas como corretora, mas como curadora de espaços excepcionais. Seu olhar clínico para a arquitetura de interiores e precisão estrutural permite identificar propriedades que transcendem o comum.
+                </p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
+                    Oferecendo um serviço altamente personalizado, discrição absoluta e acesso às joias mais exclusivas e off-market da cidade. Cada cliente recebe um acompanhamento sob medida, guiado por uma profunda compreensão do que significa viver com prestígio e sofisticação.
+                </p>
+<img alt="Sabrina - Professional Portrait" class="w-48 h-auto grayscale opacity-80 img-fade-in mx-auto" data-alt="A highly professional, editorial-style portrait of a sophisticated real estate curator." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXiivwzvBXV552xB8DRsQRWAE0As1ASNuqS9yDQpt-eqgfB6T9YfsDHoW2vnioh89EreN2RuYhyhrrMFFAkAIsLTe1loavGXfoPv7CmBmN25W9iU2dmZd5XZ4jlnTqiradRZNAXxFCddAqDLUSt6hryz6iWvQii--zsOJYJII2feM1AjGxlcE8AmLx0yeMLJVRScOHK7-kbsvyMBLJbSSf_WSDFEhmQir4TDLl3BmAGeGA3DhXRqov8S1oiS0zXlQKxB0mrk069G0">
+</div>
+<div class="order-1 md:order-2 h-[614px] md:h-[819px] w-full">
+<img alt="High-end luxury real estate architecture detail" class="w-full h-full object-cover img-fade-in" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGtSZoccCwVTEicidC6ETljXJU6zIHd9LykDVJ5EtyfCP-nFUHOmNI2cu0S1DTkUDVphr9-SuDomonH8ZKZPhSFK7WJhxY5ljA2w8feROISg7SNcp6As7hKgaWsuWBuhtp4Y1LiQj_L9vlNl-RStViweGiEeQfNCtTvJwXn3jljTy0MIiga03SfdSBn3HNSti-hluHBACWDJFKfrGiMGrV4N4do9FQ2CeeT_G7OQaoA2GXSaYJ0RndKNVhkh0AlBWIZFJjKJkK-C8">
+</div>
+</div>
+</section>
+<!-- Contact Form Section -->
+<section class="py-[120px] px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="contato">
+<div class="max-w-2xl mx-auto text-center mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-stack-sm">Entre em Contato</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Entre em contato para agendar uma visita ou solicitar o portfólio completo de propriedades exclusivas.</p>
+</div>
+<form class="max-w-3xl mx-auto space-y-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div class="relative">
+<label class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant block mb-2" for="name">Nome Completo</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary py-2 font-body-md text-primary transition-colors rounded-none placeholder-transparent" id="name" placeholder="Nome" type="text">
+</div>
+<div class="relative">
+<label class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant block mb-2" for="phone">Telefone</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary py-2 font-body-md text-primary transition-colors rounded-none placeholder-transparent" id="phone" placeholder="Telefone" type="tel">
+</div>
+</div>
+<div class="relative">
+<label class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant block mb-2" for="email">E-mail</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary py-2 font-body-md text-primary transition-colors rounded-none placeholder-transparent" id="email" placeholder="E-mail" type="email">
+</div>
+<div class="relative">
+<label class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant block mb-2" for="interest">Interesse (Opcional)</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary py-2 font-body-md text-primary transition-colors rounded-none placeholder-transparent" id="interest" placeholder="Ex: Penthouse nos Jardins" type="text">
+</div>
+<div class="text-center pt-8">
+<button class="bg-primary text-on-primary font-label-md text-label-md uppercase tracking-widest px-12 py-4 rounded-none hover:bg-secondary-fixed-dim hover:text-on-secondary-fixed border border-primary transition-all duration-300" type="submit">
+                    Solicitar Contato
+                </button>
+</div>
+</form>
+</section>
+</main>
+<!-- Shared Component: Footer -->
+<footer class="w-full py-stack-lg bg-surface-container-lowest dark:bg-surface-container-highest border-t border-outline-variant/10">
+<div class="flex flex-col gap-stack-md px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto items-center md:items-start text-center md:text-left">
+<div class="w-full flex flex-col md:flex-row justify-between items-center gap-stack-md">
+<span class="font-display-lg text-headline-lg text-primary dark:text-on-surface tracking-tighter">
+                SABRINA
+            </span>
+<nav class="flex flex-wrap justify-center gap-x-8 gap-y-4">
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline hover:text-secondary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline hover:text-secondary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline hover:text-secondary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">Accessibility</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline hover:text-secondary-fixed-dim transition-colors opacity-80 hover:opacity-100" href="#">Contact</a>
+</nav>
+</div>
+<div class="w-full mt-stack-md">
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-outline text-sm uppercase tracking-widest">
+                
+            </p>
+</div>
+</div>
+</footer>
+<script>
+    // Scroll interaction for TopNavBar
+    document.addEventListener('DOMContentLoaded', () => {
+        const nav = document.getElementById('main-nav');
+        const logo = document.getElementById('brand-logo');
+        const links = document.querySelectorAll('.nav-link');
+        const contactBtn = document.getElementById('contact-btn');
+        
+        function handleScroll() {
+            const isScrolled = window.scrollY > 50;
+            
+            if (isScrolled) {
+                nav.classList.add('scrolled');
+                logo.classList.add('scrolled');
+                contactBtn.classList.add('scrolled');
+                links.forEach(link => link.classList.add('scrolled'));
+            } else {
+                nav.classList.remove('scrolled');
+                logo.classList.remove('scrolled');
+                contactBtn.classList.remove('scrolled');
+                links.forEach(link => link.classList.remove('scrolled'));
+            }
+        }
+        
+        // Initial check
+        handleScroll();
+        
+        // Listen for scroll events
+        window.addEventListener('scroll', handleScroll);
+
+        // Carousel Functionality
+        const carousel = document.getElementById('property-carousel');
+        const nextBtn = document.getElementById('carousel-next');
+        const prevBtn = document.getElementById('carousel-prev');
+
+        if (carousel && nextBtn && prevBtn) {
+            nextBtn.addEventListener('click', () => {
+                const scrollAmount = carousel.offsetWidth * 0.8;
+                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            prevBtn.addEventListener('click', () => {
+                const scrollAmount = carousel.offsetWidth * 0.8;
+                carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+        }
+    });
+</script>
+
+
+```
+
+</body></html>
